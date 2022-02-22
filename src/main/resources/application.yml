@@ -6,5 +6,11 @@ spring:
     username: postgres
     password: postgres
     driverClassName: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:scripts/migration
+    schemas: restaurants
+    validate-on-migrate: false
+    baseline-on-migrate: true
   jpa:
     open-in-view: false

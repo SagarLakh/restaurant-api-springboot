@@ -7,7 +7,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class RestaurantDto {
 
-  private String id;
+  private Long id;
 
   private String name;
 
@@ -17,8 +17,5 @@ public class RestaurantDto {
 
   private String address;
 
-  private String rating;
-
-  private String comment;
 
 }

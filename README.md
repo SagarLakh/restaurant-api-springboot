@@ -5,4 +5,4 @@ To start the application, make sure the docker daemon is running and go to the d
 
 `docker compose up`
 
-This command will start up the postgres database and the application. The application will be accessible throught the 8080 port.
+This command will start up the postgres database and the application. The application will be accessible through the 8080 port.

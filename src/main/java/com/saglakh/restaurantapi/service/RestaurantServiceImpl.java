@@ -18,7 +18,7 @@ public class RestaurantServiceImpl implements RestaurantService {
   }
 
   public List<Restaurant> getAll() {
-    return restaurantServiceMapper.toListModel(restaurantRepository.getAll());
+    return restaurantServiceMapper.toListModel(restaurantRepository.findAll());
   }
 
 }
