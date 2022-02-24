@@ -1,6 +1,6 @@
 package com.saglakh.restaurantapi.controller.mapper;
 
-import com.saglakh.restaurantapi.controller.dto.RestaurantDto;
+import com.saglakh.restaurantapi.rest.model.RestaurantDto;
 import com.saglakh.restaurantapi.service.model.Restaurant;
 import java.util.List;
 import org.mapstruct.*;

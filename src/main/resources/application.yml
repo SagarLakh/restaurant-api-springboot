@@ -14,3 +14,7 @@ spring:
     baseline-on-migrate: true
   jpa:
     open-in-view: false
+springfox:
+  documentation:
+    swagger-ui:
+      base-url: /documentation

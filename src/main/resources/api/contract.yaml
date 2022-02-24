@@ -1,0 +1,67 @@
+openapi: 3.0.2
+info:
+  title: Api contract for Restaurant domain
+  description: "Api contract to access Restaurant domain"
+  termsOfService: none
+  contact:
+    email: sag.lakh@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: Localhost development server
+tags:
+  - name: restaurants
+    description: Operations about Restaurants
+paths:
+  /v1/restaurants:
+    get:
+      tags:
+        - restaurants
+      summary: Get all restaurants
+      description: Get all the restaurants
+      operationId: getAllRestaurants
+      responses:
+        200:
+          description: List of restaurants returned, may be empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurants'
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: body
+components:
+  schemas:
+    Restaurant:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        city:
+          type: string
+        address:
+          type: string
+    Restaurants:
+      type: array
+      items:
+        $ref: '#/components/schemas/Restaurant'
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        description:
+          type: string
