@@ -37,6 +37,126 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
       x-codegen-request-body-name: body
+    post:
+      tags:
+        - restaurants
+      summary: Create a new restaurant
+      description: Create a new restaurant
+      operationId: createRestaurant
+      responses:
+        200:
+          description: Not used
+          content: {}
+        201:
+          description: Restaurant created successfully
+          content: {}
+        409:
+          description: Restaurant with the provided id already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: body
+  /v1/restaurants/{id}:
+    get:
+      tags:
+        - restaurants
+      summary: Get restaurant by id
+      description: Get restaurant by id
+      operationId: getRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Restaurant info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Restaurant'
+        404:
+          description: Restaurant with id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - restaurants
+      summary: Delete restaurant by id
+      description: Delete restaurant by id
+      operationId: deleteRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Restaurant successfully deleted
+          content: {}
+        404:
+          description: Restaurant with id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: body
+    put:
+      tags:
+        - restaurants
+      summary: Update restaurant by id
+      description: Update restaurant by id
+      operationId: updateRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Restaurant successfully updated
+          content: {}
+        404:
+          description: Restaurant with id not found
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Error'
+        500:
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-codegen-request-body-name: body
 components:
   schemas:
     Restaurant:
