@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=restaurants
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  flyway:
+    enabled: true
+    locations: classpath:scripts/migration
+    schemas: restaurants
+    validate-on-migrate: false
+    baseline-on-migrate: true
+  jpa:
+    open-in-view: false
+springfox:
+  documentation:
+    swagger-ui:
+      base-url: /documentation
