@@ -1,7 +1,7 @@
 package com.saglakh.restaurantapi.service.mapper;
 
 import com.saglakh.restaurantapi.repository.entity.RestaurantEntity;
-import com.saglakh.restaurantapi.service.model.Restaurant;
+import com.saglakh.restaurantapi.rest.model.RestaurantDto;
 import java.util.List;
 import org.mapstruct.*;
 
@@ -12,6 +12,10 @@ import org.mapstruct.*;
     componentModel = "spring")
 public interface RestaurantServiceMapper {
 
-  List<Restaurant> toListModel(List<RestaurantEntity> restaurants);
+  List<RestaurantDto> toListDto(List<RestaurantEntity> restaurants);
+
+  RestaurantDto toDto(RestaurantEntity restaurant);
+
+  RestaurantEntity toEntity(RestaurantDto restaurant);
 
 }
