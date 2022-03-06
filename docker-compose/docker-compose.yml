@@ -11,6 +11,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/postgres?currentSchema=restaurants
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
+    ports:
+      - '8080:8080'
 
   postgres:
     image: postgres:13.3
