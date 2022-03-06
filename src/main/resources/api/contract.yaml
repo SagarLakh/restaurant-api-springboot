@@ -1,7 +1,7 @@
 openapi: 3.0.2
 info:
   title: Api contract for Restaurant domain
-  description: "Api contract to access Restaurant domain"
+  description: Api contract to access Restaurant domain
   termsOfService: none
   contact:
     email: sag.lakh@gmail.com
@@ -25,17 +25,127 @@ paths:
       operationId: getAllRestaurants
       responses:
         200:
-          description: List of restaurants returned, may be empty
+          description: List of restaurants returned
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Restaurants'
         500:
           description: Internal server error
+          content: {}
+      x-codegen-request-body-name: body
+    post:
+      tags:
+        - restaurants
+      summary: Create a new restaurant
+      description: Create a new restaurant
+      operationId: createRestaurant
+      requestBody:
+        description: Restaurant information to be created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+      responses:
+        200:
+          description: Not used
+          content: {}
+        201:
+          description: Restaurant created successfully
+          content: {}
+        409:
+          description: Restaurant with the provided id already exists
+          content: {}
+        500:
+          description: Internal server error
+          content: {}
+      x-codegen-request-body-name: body
+  /v1/restaurants/{id}:
+    get:
+      tags:
+        - restaurants
+      summary: Get restaurant by id
+      description: Get restaurant by id
+      operationId: getRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Restaurant info
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/Restaurant'
+        404:
+          description: Restaurant with id not found
+          content: {}
+        500:
+          description: Internal server error
+          content: {}
+      x-codegen-request-body-name: body
+    delete:
+      tags:
+        - restaurants
+      summary: Delete restaurant by id
+      description: Delete restaurant by id
+      operationId: deleteRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Restaurant successfully deleted
+          content: {}
+        404:
+          description: Restaurant with id not found
+          content: {}
+        500:
+          description: Internal server error
+          content: {}
+      x-codegen-request-body-name: body
+    put:
+      tags:
+        - restaurants
+      summary: Update restaurant by id
+      description: Update restaurant by id
+      operationId: updateRestaurantById
+      parameters:
+        - name: id
+          in: path
+          description: Id to retrieve its restaurant associated information
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Restaurant information to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Restaurant'
+      responses:
+        200:
+          description: Restaurant successfully updated
+          content: {}
+        404:
+          description: Restaurant with id not found
+          content: {}
+        500:
+          description: Internal server error
+          content: {}
       x-codegen-request-body-name: body
 components:
   schemas:
@@ -44,6 +154,7 @@ components:
       properties:
         id:
           type: integer
+          format: int64
         name:
           type: string
         description:
@@ -56,12 +167,3 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Restaurant'
-    Error:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        description:
-          type: string
