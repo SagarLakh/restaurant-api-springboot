@@ -1,16 +1,18 @@
 package com.saglakh.restaurantapi.service;
 
+import com.saglakh.restaurantapi.model.OperationResult;
 import com.saglakh.restaurantapi.repository.RestaurantRepository;
 import com.saglakh.restaurantapi.repository.entity.RestaurantEntity;
 import com.saglakh.restaurantapi.rest.model.RestaurantDto;
 import com.saglakh.restaurantapi.service.mapper.RestaurantServiceMapper;
-import com.saglakh.restaurantapi.service.model.OperationResult;
 import java.util.List;
 import java.util.Optional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class RestaurantServiceImpl implements RestaurantService {
 
   private final RestaurantRepository restaurantRepository;
