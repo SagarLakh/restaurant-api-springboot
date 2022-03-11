@@ -1,7 +1,7 @@
 package com.saglakh.restaurantapi.service;
 
 import com.saglakh.restaurantapi.rest.model.RestaurantDto;
-import com.saglakh.restaurantapi.service.model.OperationResult;
+import com.saglakh.restaurantapi.model.OperationResult;
 import java.util.List;
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.saglakh.restaurantapi.service.model;
+package com.saglakh.restaurantapi.model;
 
 public enum OperationResult {
   OK,
